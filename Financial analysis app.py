@@ -20,6 +20,145 @@ import warnings
 
 # --- Page Configuration (Theme & Layout) ---
 st.set_page_config(
+
+
+# --- Theme Selector ---
+theme_options = {
+    "Game of Thrones": {
+        "colors": {
+            "primary": "#8B0000",
+            "accent": "#FFD700",
+            "bg": "#1A1A1A",
+            "text": "#EAEAEA",
+            "header": "#FFFFFF",
+            "sidebar": "#2B2B2B",
+            "border": "#444444"
+        },
+        "font": "Cinzel",
+        "quotes": {
+            "welcome_title": "Hear Me Roar!",
+            "welcome_sub": "Welcome to the Lannister Financial Console",
+            "quote": "A Lannister always pays his debts...",
+            "complete": "Analysis complete! The realm profits.",
+            "download_label": "Hear Me Roar! (Download {label})"
+        },
+        "gifs": {
+            "welcome": "https://media.giphy.com/media/L1JjHInX78b5e/giphy.gif",
+            "footer": "https://media1.giphy.com/media/2wYYlHuEw1UcsJYgAA/giphy.gif",
+            "sidebar": "https://media.giphy.com/media/3oEjI1erPMTMBFmNHi/giphy.gif"
+        },
+        "icon": "🦁"
+    },
+    "WWE Memes": {
+        "colors": {
+            "primary": "#000000",
+            "accent": "#00FF00",
+            "bg": "#111111",
+            "text": "#FFFFFF",
+            "header": "#00FF00",
+            "sidebar": "#222222",
+            "border": "#00FF00"
+        },
+        "font": "Bangers",
+        "quotes": {
+            "welcome_title": "Here Comes the Money!",
+            "welcome_sub": "Welcome to the SmackDown Stock Show",
+            "quote": "If ya smell... profits!",
+            "complete": "Analysis complete! Money talks.",
+            "download_label": "Download the Smackdown: {label}"
+        },
+        "gifs": {
+            "welcome": "https://media.giphy.com/media/xT0BKiaM2VGJ4115Nu/giphy.gif",
+            "footer": "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif",
+            "sidebar": "https://media.giphy.com/media/13V60d9GqTQv9a/giphy.gif"
+        },
+        "icon": "💰"
+    },
+    "Spongebob": {
+        "colors": {
+            "primary": "#fce303",
+            "accent": "#ff6f61",
+            "bg": "#fdf5e6",
+            "text": "#2e2e2e",
+            "header": "#ff6f61",
+            "sidebar": "#fffacd",
+            "border": "#ffdab9"
+        },
+        "font": "Comic Neue",
+        "quotes": {
+            "welcome_title": "I'm Ready!",
+            "welcome_sub": "Welcome to Bikini Bottom Analytics",
+            "quote": "Is mayonnaise a financial instrument?",
+            "complete": "Analysis complete! I'm ready!",
+            "download_label": "Order Up! Download {label}"
+        },
+        "gifs": {
+            "welcome": "https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif",
+            "footer": "https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif",
+            "sidebar": "https://media.giphy.com/media/3oEjHCWdU7F4sVOxPG/giphy.gif"
+        },
+        "icon": "🍍"
+    },
+    "Breaking Bad": {
+        "colors": {
+            "primary": "#003300",
+            "accent": "#39FF14",
+            "bg": "#121212",
+            "text": "#e0e0e0",
+            "header": "#39FF14",
+            "sidebar": "#1f1f1f",
+            "border": "#2e8b57"
+        },
+        "font": "Share Tech Mono",
+        "quotes": {
+            "welcome_title": "I Am the Danger.",
+            "welcome_sub": "Welcome to Heisenberg's Financial Lab",
+            "quote": "Say my name... Profit.",
+            "complete": "Analysis complete. You're goddamn right.",
+            "download_label": "Download Lab Results: {label}"
+        },
+        "gifs": {
+            "welcome": "https://media.giphy.com/media/l3vR9O7dhwEu5WzJK/giphy.gif",
+            "footer": "https://media.giphy.com/media/3og0INyCmHlNylks9O/giphy.gif",
+            "sidebar": "https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif"
+        },
+        "icon": "🧪"
+    }
+}
+
+# --- Theme Selection in Sidebar ---
+with st.sidebar:
+    selected_theme = st.selectbox("Choose Theme:", list(theme_options.keys()), index=0)
+theme = theme_options[selected_theme]
+
+# --- Apply Selected Theme ---
+GOOGLE_FONT = theme["font"]
+FONT_URL = f"https://fonts.googleapis.com/css2?family={GOOGLE_FONT.replace(' ', '+')}&display=swap"
+
+st.markdown(f"""
+<link href="{FONT_URL}" rel="stylesheet">
+<style>
+    html, body, [class*="st-"] {{
+        font-family: '{GOOGLE_FONT}', sans-serif !important;
+    }}
+    .stApp {{
+        background-color: {theme["colors"]["bg"]};
+        color: {theme["colors"]["text"]};
+    }}
+    [data-testid="stSidebar"]] {{
+        background-color: {theme["colors"]["sidebar"]};
+    }}
+    h1, h2, h3 {{
+        color: {theme["colors"]["header"]} !important;
+    }}
+    .stButton > button {{
+        background-color: {theme["colors"]["primary"]};
+        color: {theme["colors"]["accent"]};
+        border: 1px solid {theme["colors"]["accent"]};
+    }}
+</style>
+""", unsafe_allow_html=True)
+
     page_title="Lannister Financial Analysis",
     page_icon="🦁", # Lannister Lion
     layout="wide",
