@@ -49,7 +49,7 @@ theme_options = {
         },
         "icon": "🦁"
     },
-    "WWE Memes": {
+    "WWE theme": {
         "colors": {
             "primary": "#000000",
             "accent": "#00FF00",
@@ -73,9 +73,9 @@ theme_options = {
             "download_label": "Download the Smackdown: {label}"
         },
         "gifs": {
-            "welcome": "https://media.giphy.com/media/xT0BKiaM2VGJ4115Nu/giphy.gif",
-            "footer": "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif",
-            "sidebar": "https://media.giphy.com/media/13V60d9GqTQv9a/giphy.gif"
+            "welcome": "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGtrbDBvd3Rkbmo1ZGMxcTZ6Nmo5c2U4NjdxdHhyeWNvcnl6MTg5ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UiBmJv6Hh6FfW/giphy.gif",
+            "footer": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXQ0b2ZmdXhtYTB0Y3B2dHY2ZXZwYm8za2VnazJ1aXNmNGxnaHpodCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/oOl70OBTe6t6IKLIhx/giphy.gif",
+            "sidebar": "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMW90eTBmbHJneDV3OThuNGhqcW9pMHA0MHBkMGhna2lqbjh2YTcycSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XfOzScbB2XhzVVzKeI/giphy.gif"
         },
         "icon": "💰"
     },
@@ -103,9 +103,9 @@ theme_options = {
             "download_label": "Order Up! Download {label}"
         },
         "gifs": {
-            "welcome": "https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif",
-            "footer": "https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif",
-            "sidebar": "https://media.giphy.com/media/3oEjHCWdU7F4sVOxPG/giphy.gif"
+            "welcome": "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTFzc3Q1a2Rtajd2bnF3M2sydWF2aDZrMGZqeW82cnBra2ZzMWpzeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LdOyjZ7io5Msw/giphy.gif",
+            "footer": "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeThiOG5lamh6cjgxYXhqMzBxZTlmczY1cDRncW8wd3JmcWQ0eWJtYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6tHy8UAbv3zgs/giphy.gif",
+            "sidebar": "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaW4xaXUyY2JjNDdsOHRva2gwdnJwMWlsNGgzdmJlanVmajZjbzk3aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/yYrYPXatpCMiA/giphy.gif"
         },
         "icon": "🍍"
     },
@@ -133,9 +133,9 @@ theme_options = {
             "download_label": "Download Lab Results: {label}"
         },
         "gifs": {
-            "welcome": "https://media.giphy.com/media/l3vR9O7dhwEu5WzJK/giphy.gif",
-            "footer": "https://media.giphy.com/media/3og0INyCmHlNylks9O/giphy.gif",
-            "sidebar": "https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif"
+            "welcome": "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaW44eGV2anE2YmZrMzB6eHdhcmRpOXQ5ZXYzczZ5bzA1MGx4YzliZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WQJ2DORvilpEk/giphy.gif",
+            "footer": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExazFrY3ppcm1iNTllcTlyYm51ZWVpNDh0cnJid3FiMnh4bXFwaHdnbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT0GqssRweIhlz209i/giphy.gif",
+            "sidebar": "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGJjcWZpZTFkOHhrZnFjenF1MDl6YjhmazM2MWZpeDJ5YnNhOGJsayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/R3S6MfUoKvBVS/giphy.gif"
         },
         "icon": "🧪"
     }
