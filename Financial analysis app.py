@@ -1,5 +1,3 @@
---- START OF FILE newer pf proj code_fixed.py ---
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -168,13 +166,13 @@ st.set_page_config(
 theme = theme_options[st.session_state.selected_theme_name]
 
 with st.sidebar:
-    st.write("--- DEBUG: Sidebar - Theme Selector Section ---") # DEBUG
+    # st.write("--- DEBUG: Sidebar - Theme Selector Section ---") # DEBUG
     try:
         # Display sidebar elements that depend on the current theme
         st.image(theme["gifs"]["sidebar"], use_container_width=True, caption="Sidebar Image")
         st.markdown(f"<h2 style='color:{theme['colors']['header']}; text-align: center;'>{st.session_state.selected_theme_name} Console</h2>", unsafe_allow_html=True)
         st.divider()
-        st.write("--- DEBUG: Sidebar image and title rendered. ---") # DEBUG
+        # st.write("--- DEBUG: Sidebar image and title rendered. ---") # DEBUG
     except KeyError as e:
         st.error(f"Theme Key Error in sidebar display: {e}. Check theme_options for '{st.session_state.selected_theme_name}'.")
     except Exception as e:
@@ -184,7 +182,7 @@ with st.sidebar:
     # Theme Selector Dropdown
     try:
         current_theme_index = list(theme_options.keys()).index(st.session_state.selected_theme_name)
-        st.write(f"--- DEBUG: Current theme index for selectbox: {current_theme_index} ---") # DEBUG
+        # st.write(f"--- DEBUG: Current theme index for selectbox: {current_theme_index} ---") # DEBUG
 
         new_selected_theme_name = st.selectbox(
             "Choose Theme:",
@@ -192,16 +190,16 @@ with st.sidebar:
             index=current_theme_index,
             key="theme_selector_sidebar_v3" # Using a new distinct key
         )
-        st.write(f"--- DEBUG: Selectbox rendered. Selected value: {new_selected_theme_name} ---") # DEBUG
+        # st.write(f"--- DEBUG: Selectbox rendered. Selected value: {new_selected_theme_name} ---") # DEBUG
 
         if new_selected_theme_name != st.session_state.selected_theme_name:
             st.session_state.selected_theme_name = new_selected_theme_name
-            st.write(f"--- DEBUG: Theme changed to {new_selected_theme_name}. Rerunning... ---") # DEBUG
+            # st.write(f"--- DEBUG: Theme changed to {new_selected_theme_name}. Rerunning... ---") # DEBUG
             st.rerun() # Rerun to apply new theme from top
     except Exception as e:
         st.error(f"Error in Theme Selector Dropdown: {e}")
         st.exception(e) # Print full traceback for dropdown error
-    st.write("--- DEBUG: End of Theme Selector in Sidebar ---") # DEBUG
+    # st.write("--- DEBUG: End of Theme Selector in Sidebar ---") # DEBUG
 
 
 # --- Apply Selected Theme CSS (uses the `theme` variable defined above) ---
@@ -895,5 +893,3 @@ elif st.session_state.app_started:
     # --- Footer ---
     st.markdown("---")
     st.markdown(f"<p style='text-align: center; color: {theme['colors']['accent']};'><i>{theme['quotes']['quote']}</i></p>", unsafe_allow_html=True)
-
---- END OF FILE newer pf proj code_fixed.py ---
