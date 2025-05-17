@@ -135,7 +135,7 @@ theme_options = {
         "gifs": {
             "welcome": "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaW44eGV2anE2YmZrMzB6eHdhcmRpOXQ5ZXYzczZ5bzA1MGx4YzliZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WQJ2DORvilpEk/giphy.gif",
             "footer": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExazFrY3ppcm1iNTllcTlyYm51ZWVpNDh0cnJid3FiMnh4bXFwaHdnbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT0GqssRweIhlz209i/giphy.gif",
-            "sidebar": "https://giphy.com/gifs/breaking-bad-wink-walter-white-R3S6MfUoKvBVS"
+            "sidebar": "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGJjcWZpZTFkOHhrZnFjenF1MDl6YjhmazM2MWZpeDJ5YnNhOGJsayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/R3S6MfUoKvBVS/giphy.gif"
         },
         "icon": "🧪"
     }
