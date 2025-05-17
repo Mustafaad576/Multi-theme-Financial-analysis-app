@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -128,6 +129,12 @@ theme_options = {
 
 # --- Theme Selection in Sidebar ---
 with st.sidebar:
+
+    # --- Theme Selector (Top of Sidebar) ---
+    st.markdown("### Theme")
+    selected_theme = st.selectbox("Choose Theme:", list(theme_options.keys()), index=0, key="theme_selector")
+    theme = theme_options[selected_theme]
+    st.session_state.theme = theme
     selected_theme = st.selectbox("Choose Theme:", list(theme_options.keys()), index=0)
 theme = theme_options[selected_theme]
 
