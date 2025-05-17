@@ -1,119 +1,4 @@
 import streamlit as st
-
-
-# --- Theme Selector ---
-theme_options = {
-    "Game of Thrones": {
-        "colors": {
-            "primary": "#8B0000",
-            "accent": "#FFD700",
-            "bg": "#1A1A1A",
-            "text": "#EAEAEA",
-            "header": "#FFFFFF",
-            "sidebar": "#2B2B2B",
-            "border": "#444444"
-        },
-        "font": "Cinzel",
-        "quotes": {
-            "welcome_title": "Hear Me Roar!",
-            "welcome_sub": "Welcome to the Lannister Financial Console",
-            "quote": "A Lannister always pays his debts...",
-            "complete": "Analysis complete! The realm profits.",
-            "download_label": "Hear Me Roar! (Download {label})"
-        },
-        "gifs": {
-            "welcome": "https://media.giphy.com/media/L1JjHInX78b5e/giphy.gif",
-            "footer": "https://media1.giphy.com/media/2wYYlHuEw1UcsJYgAA/giphy.gif",
-            "sidebar": "https://media.giphy.com/media/3oEjI1erPMTMBFmNHi/giphy.gif"
-        },
-        "icon": "🦁"
-    },
-    "WWE Memes": {
-        "colors": {
-            "primary": "#000000",
-            "accent": "#00FF00",
-            "bg": "#111111",
-            "text": "#FFFFFF",
-            "header": "#00FF00",
-            "sidebar": "#222222",
-            "border": "#00FF00"
-        },
-        "font": "Bangers",
-        "quotes": {
-            "welcome_title": "Here Comes the Money!",
-            "welcome_sub": "Welcome to the SmackDown Stock Show",
-            "quote": "If ya smell... profits!",
-            "complete": "Analysis complete! Money talks.",
-            "download_label": "Download the Smackdown: {label}"
-        },
-        "gifs": {
-            "welcome": "https://media.giphy.com/media/xT0BKiaM2VGJ4115Nu/giphy.gif",
-            "footer": "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif",
-            "sidebar": "https://media.giphy.com/media/13V60d9GqTQv9a/giphy.gif"
-        },
-        "icon": "💰"
-    },
-    "Spongebob": {
-        "colors": {
-            "primary": "#fce303",
-            "accent": "#ff6f61",
-            "bg": "#fdf5e6",
-            "text": "#2e2e2e",
-            "header": "#ff6f61",
-            "sidebar": "#fffacd",
-            "border": "#ffdab9"
-        },
-        "font": "Comic Neue",
-        "quotes": {
-            "welcome_title": "I'm Ready!",
-            "welcome_sub": "Welcome to Bikini Bottom Analytics",
-            "quote": "Is mayonnaise a financial instrument?",
-            "complete": "Analysis complete! I'm ready!",
-            "download_label": "Order Up! Download {label}"
-        },
-        "gifs": {
-            "welcome": "https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif",
-            "footer": "https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif",
-            "sidebar": "https://media.giphy.com/media/3oEjHCWdU7F4sVOxPG/giphy.gif"
-        },
-        "icon": "🍍"
-    },
-    "Breaking Bad": {
-        "colors": {
-            "primary": "#003300",
-            "accent": "#39FF14",
-            "bg": "#121212",
-            "text": "#e0e0e0",
-            "header": "#39FF14",
-            "sidebar": "#1f1f1f",
-            "border": "#2e8b57"
-        },
-        "font": "Share Tech Mono",
-        "quotes": {
-            "welcome_title": "I Am the Danger.",
-            "welcome_sub": "Welcome to Heisenberg's Financial Lab",
-            "quote": "Say my name... Profit.",
-            "complete": "Analysis complete. You're goddamn right.",
-            "download_label": "Download Lab Results: {label}"
-        },
-        "gifs": {
-            "welcome": "https://media.giphy.com/media/l3vR9O7dhwEu5WzJK/giphy.gif",
-            "footer": "https://media.giphy.com/media/3og0INyCmHlNylks9O/giphy.gif",
-            "sidebar": "https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif"
-        },
-        "icon": "🧪"
-    }
-}
-
-# Always show theme selector at top of sidebar
-with st.sidebar:
-    st.markdown("## 🎭 Theme")
-    selected_theme = st.selectbox("Choose Theme:", list(theme_options.keys()), index=0, key="theme_selector")
-    theme = theme_options[selected_theme]
-    st.session_state.theme = theme
-
-
-
 import pandas as pd
 import numpy as np
 import yfinance as yf
@@ -151,11 +36,11 @@ theme_options = {
         },
         "font": "Cinzel",
         "quotes": {
-            "welcome_title": "Hear Me Roar!",
-            "welcome_sub": "Welcome to the Lannister Financial Console",
+            "welcome_title": "theme["quotes"]["welcome_title"]",
+            "welcome_sub": "theme["quotes"]["welcome_sub"]",
             "quote": "A Lannister always pays his debts...",
             "complete": "Analysis complete! The realm profits.",
-            "download_label": "Hear Me Roar! (Download {label})"
+            "download_label": "theme["quotes"]["welcome_title"] (Download {label})"
         },
         "gifs": {
             "welcome": "https://media.giphy.com/media/L1JjHInX78b5e/giphy.gif",
@@ -249,18 +134,16 @@ with st.sidebar:
     selected_theme = st.selectbox("Choose Theme:", list(theme_options.keys()), index=0, key="theme_selector")
     theme = theme_options[selected_theme]
     st.session_state.theme = theme
-
+    selected_theme = st.selectbox("Choose Theme:", list(theme_options.keys()), index=0)
 theme = theme_options[selected_theme]
 
 # --- Apply Selected Theme ---
-GOOGLE_FONT = theme["font"]
-FONT_URL = f"https://fonts.googleapis.com/css2?family={GOOGLE_FONT.replace(' ', '+')}&display=swap"
 
 st.markdown(f"""
 <link href="{FONT_URL}" rel="stylesheet">
 <style>
     html, body, [class*="st-"] {{
-        font-family: '{GOOGLE_FONT}', sans-serif !important;
+        font-family: '{theme["font"]}', sans-serif !important;
     }}
     .stApp {{
         background-color: {theme["colors"]["bg"]};
@@ -287,17 +170,8 @@ st.markdown(f"""
 )
 
 # --- Lannister Theme ---
-LANNISTER_CRIMSON = "#8B0000" # Dark Red
-LANNISTER_GOLD = "#FFD700"    # Gold
-LANNISTER_DARK = "#1A1A1A"    # Very Dark Gray/Almost Black Background
-LANNISTER_TEXT = "#EAEAEA"    # Light Gray/Off-White Text
-LANNISTER_TEXT_HEADER = "#FFFFFF" # Brighter White for Headers
-LANNISTER_SIDEBAR = "#2B2B2B" # Darker Gray Sidebar
-LANNISTER_BORDER = "#444444" # Dark Border
 
 # --- Font ---
-GOOGLE_FONT = "Cinzel" # Google Font for Lannister theme
-FONT_URL = f"https://fonts.googleapis.com/css2?family={GOOGLE_FONT.replace(' ', '+')}:wght@400;700&display=swap"
 
 # --- Custom CSS for Lannister Theming ---
 st.markdown(f"""
@@ -305,19 +179,19 @@ st.markdown(f"""
 <style>
     /* Apply Font Globally */
     html, body, [class*="st-"], button, input, select, textarea {{
-        font-family: '{GOOGLE_FONT}', serif !important;
+        font-family: '{theme["font"]}', serif !important;
     }}
 
     /* Main background and text */
     .stApp {{
-        background-color: {LANNISTER_DARK};
-        color: {LANNISTER_TEXT};
+        background-color: {theme["colors"]["bg"]};
+        color: {theme["colors"]["text"]};
     }}
 
     /* Sidebar */
     [data-testid="stSidebar"] > div:first-child {{
-        background-color: {LANNISTER_SIDEBAR};
-        border-right: 1px solid {LANNISTER_BORDER};
+        background-color: {theme["colors"]["sidebar"]};
+        border-right: 1px solid {theme["colors"]["border"]};
     }}
     /* Sidebar Headers & Text */
     [data-testid="stSidebar"] h1,
@@ -326,20 +200,20 @@ st.markdown(f"""
     [data-testid="stSidebar"] .stMarkdown,
     [data-testid="stSidebar"] .stText,
     [data-testid="stSidebar"] .stRadio label span {{ /* Target radio labels */
-        color: {LANNISTER_TEXT_HEADER} !important; /* Brighter text for sidebar */
+        color: {theme["colors"]["header"]} !important; /* Brighter text for sidebar */
         font-weight: 700; /* Bolder */
     }}
     /* Sidebar input widgets */
     [data-testid="stSidebar"] .stTextInput input {{
         background-color: #383838 !important;
-        color: {LANNISTER_TEXT} !important;
-        border: 1px solid {LANNISTER_BORDER} !important;
+        color: {theme["colors"]["text"]} !important;
+        border: 1px solid {theme["colors"]["border"]} !important;
     }}
     /* --- CSS Fix for Sidebar Selectbox Text Visibility --- */
     [data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] > div {{
         background-color: #383838 !important;
-        color: {LANNISTER_TEXT} !important;
-        border: 1px solid {LANNISTER_BORDER} !important;
+        color: {theme["colors"]["text"]} !important;
+        border: 1px solid {theme["colors"]["border"]} !important;
         padding: 0.5em 0.6em !important; /* Adjusted padding */
         height: auto !important; /* Let height adjust to content */
         min-height: 40px !important; /* Ensure a minimum clickable height */
@@ -347,7 +221,7 @@ st.markdown(f"""
     }}
     [data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] > div > div {{
          /* This targets the inner div holding the text */
-         color: {LANNISTER_TEXT} !important;
+         color: {theme["colors"]["text"]} !important;
          overflow: visible !important; /* Allow text to overflow if needed (shouldn't be necessary with auto height) */
          white-space: normal !important; /* Allow text wrapping if needed */
          height: auto !important;
@@ -355,15 +229,15 @@ st.markdown(f"""
     /* --- End of CSS Fix --- */
 
     [data-testid="stSidebar"] .stFileUploader label span {{
-         color: {LANNISTER_TEXT} !important; /* Ensure file uploader text is visible */
+         color: {theme["colors"]["text"]} !important; /* Ensure file uploader text is visible */
     }}
 
 
     /* Buttons */
     .stButton>button {{
-        background-color: {LANNISTER_CRIMSON};
-        color: {LANNISTER_GOLD}; /* Gold text on Crimson button */
-        border: 1px solid {LANNISTER_GOLD};
+        background-color: {theme["colors"]["primary"]};
+        color: {theme["colors"]["accent"]}; /* Gold text on Crimson button */
+        border: 1px solid {theme["colors"]["accent"]};
         border-radius: 5px;
         padding: 10px 22px;
         transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
@@ -373,9 +247,9 @@ st.markdown(f"""
         letter-spacing: 0.5px;
     }}
     .stButton>button:hover {{
-        background-color: {LANNISTER_GOLD}; /* Gold background on hover */
-        color: {LANNISTER_CRIMSON}; /* Crimson text on hover */
-        border-color: {LANNISTER_CRIMSON};
+        background-color: {theme["colors"]["accent"]}; /* Gold background on hover */
+        color: {theme["colors"]["primary"]}; /* Crimson text on hover */
+        border-color: {theme["colors"]["primary"]};
     }}
      .stButton>button:focus {{
          box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.4); /* Gold focus ring */
@@ -384,40 +258,40 @@ st.markdown(f"""
 
     /* Titles and Headers in Main Area */
     h1, h2, h3 {{
-        color: {LANNISTER_GOLD}; /* Gold Headers */
+        color: {theme["colors"]["accent"]}; /* Gold Headers */
         font-weight: 700;
         text-shadow: 1px 1px 2px #000000; /* Subtle shadow */
     }}
     h1 {{
-        border-bottom: 2px solid {LANNISTER_CRIMSON};
+        border-bottom: 2px solid {theme["colors"]["primary"]};
         padding-bottom: 0.6rem;
         text-align: center; /* Center main title */
     }}
      h3 {{ /* Step headers */
         margin-top: 2rem;
         margin-bottom: 1rem;
-        border-top: 1px solid {LANNISTER_BORDER};
+        border-top: 1px solid {theme["colors"]["border"]};
         padding-top: 1rem;
-        color: {LANNISTER_GOLD}; /* Ensure step headers are gold */
+        color: {theme["colors"]["accent"]}; /* Ensure step headers are gold */
     }}
 
 
     /* Dataframe styling */
      .stDataFrame {{
-        border: 1px solid {LANNISTER_BORDER};
+        border: 1px solid {theme["colors"]["border"]};
         border-radius: 0px; /* Sharp corners */
         background-color: #252525; /* Dark background for tables */
     }}
      /* Dataframe header */
     .stDataFrame thead th {{
-        background-color: {LANNISTER_CRIMSON};
-        color: {LANNISTER_GOLD};
+        background-color: {theme["colors"]["primary"]};
+        color: {theme["colors"]["accent"]};
         font-weight: 700;
         text-transform: uppercase;
     }}
     /* Dataframe cells */
     .stDataFrame tbody td {{
-        color: {LANNISTER_TEXT};
+        color: {theme["colors"]["text"]};
     }}
 
     /* Style metric labels/values */
@@ -427,7 +301,7 @@ st.markdown(f"""
         text-transform: uppercase;
     }}
     [data-testid="stMetricValue"] {{
-        color: {LANNISTER_GOLD}; /* Gold metric value */
+        color: {theme["colors"]["accent"]}; /* Gold metric value */
         font-size: 1.3rem;
         font-weight: 700;
     }}
@@ -437,10 +311,10 @@ st.markdown(f"""
     .stNumberInput>div>div>input,
     .stSelectbox>div>div,
     .stMultiSelect>div>div {{ /* Target multiselect */
-        border: 1px solid {LANNISTER_BORDER} !important;
+        border: 1px solid {theme["colors"]["border"]} !important;
         border-radius: 0px; /* Sharp corners */
         background-color: #303030 !important;
-        color: {LANNISTER_TEXT} !important;
+        color: {theme["colors"]["text"]} !important;
     }}
      /* Adjust padding/appearance for select/multiselect */
     .stSelectbox>div>div, .stMultiSelect>div>div {{
@@ -449,27 +323,27 @@ st.markdown(f"""
     }}
     /* Slider track/thumb */
     .stSlider [data-baseweb="slider"] > div:nth-child(2) > div {{ /* Track */
-         background: {LANNISTER_CRIMSON};
+         background: {theme["colors"]["primary"]};
     }}
      .stSlider [data-baseweb="slider"] > div:nth-child(3) {{ /* Thumb */
-         background: {LANNISTER_GOLD};
-         border: 2px solid {LANNISTER_CRIMSON};
+         background: {theme["colors"]["accent"]};
+         border: 2px solid {theme["colors"]["primary"]};
     }}
 
     /* Style info/success/warning/error boxes */
     .stAlert {{
          border-radius: 0px; /* Sharp corners */
-         border: 1px solid {LANNISTER_GOLD};
+         border: 1px solid {theme["colors"]["accent"]};
          background-color: rgba(0, 0, 0, 0.3); /* Dark transparent background */
     }}
     [data-testid="stAlert"] p {{
-         color: {LANNISTER_TEXT};
+         color: {theme["colors"]["text"]};
     }}
     /* Specific alert icons/accents (using border color for theme) */
     [data-testid="stAlert"][kind="info"] {{ border-left: 5px solid #4a90e2; }} /* Blue accent */
     [data-testid="stAlert"][kind="success"] {{ border-left: 5px solid #50e3c2; }} /* Green accent */
-    [data-testid="stAlert"][kind="warning"] {{ border-left: 5px solid {LANNISTER_GOLD}; }} /* Gold accent */
-    [data-testid="stAlert"][kind="error"] {{ border-left: 5px solid {LANNISTER_CRIMSON}; }} /* Crimson accent */
+    [data-testid="stAlert"][kind="warning"] {{ border-left: 5px solid {theme["colors"]["accent"]}; }} /* Gold accent */
+    [data-testid="stAlert"][kind="error"] {{ border-left: 5px solid {theme["colors"]["primary"]}; }} /* Crimson accent */
 
     /* Center welcome screen elements */
     .welcome-container {{
@@ -504,7 +378,7 @@ def download_file(data, filename, label, file_format='csv'):
 
         buffer.seek(0)
         st.download_button(
-            label=f"Hear Me Roar! (Download {label})", # Themed label
+            label=f"theme["quotes"]["welcome_title"] (Download {label})", # Themed label
             data=buffer,
             file_name=filename,
             mime=mime,
@@ -533,22 +407,22 @@ def plot_feature_importance(model, feature_names):
     fig = px.bar(importance_df.sort_values('abs_importance', ascending=True),
                  x='importance', y='feature', orientation='h',
                  title="Feature Importance: What Pays the Debts?",
-                 color_discrete_sequence=[LANNISTER_GOLD], # Gold bars
+                 color_discrete_sequence=[theme["colors"]["accent"]], # Gold bars
                  labels={'importance': 'Influence (Coefficient/Value)', 'feature': 'Factor'})
     fig.update_layout(
         yaxis={'categoryorder':'total ascending'},
         plot_bgcolor='rgba(0,0,0,0)', # Transparent plot background
         paper_bgcolor='rgba(0,0,0,0)', # Transparent paper background
-        font_color=LANNISTER_TEXT,
-        title_font_color=LANNISTER_GOLD,
-        yaxis_tickfont_color=LANNISTER_TEXT,
-        xaxis_tickfont_color=LANNISTER_TEXT,
-        xaxis_title_font_color=LANNISTER_TEXT,
-        yaxis_title_font_color=LANNISTER_TEXT,
-        legend_font_color=LANNISTER_TEXT
+        font_color=theme["colors"]["text"],
+        title_font_color=theme["colors"]["accent"],
+        yaxis_tickfont_color=theme["colors"]["text"],
+        xaxis_tickfont_color=theme["colors"]["text"],
+        xaxis_title_font_color=theme["colors"]["text"],
+        yaxis_title_font_color=theme["colors"]["text"],
+        legend_font_color=theme["colors"]["text"]
     )
-    fig.update_xaxes(gridcolor=LANNISTER_BORDER)
-    fig.update_yaxes(gridcolor=LANNISTER_BORDER)
+    fig.update_xaxes(gridcolor=theme["colors"]["border"])
+    fig.update_yaxes(gridcolor=theme["colors"]["border"])
     return fig
 
 
@@ -573,7 +447,7 @@ def plot_clusters(df, features, cluster_labels, kmeans_model):
             idx1 = scaled_feature_names.index(features[0])
             idx2 = scaled_feature_names.index(features[1])
             fig.add_trace(go.Scatter(x=centroids[:, idx1], y=centroids[:, idx2], mode='markers',
-                                     marker=dict(color=LANNISTER_GOLD, size=18, symbol='star', line=dict(width=1, color=LANNISTER_CRIMSON)),
+                                     marker=dict(color=theme["colors"]["accent"], size=18, symbol='star', line=dict(width=1, color=theme["colors"]["primary"])),
                                      name='Centers of Power'))
         except ValueError: st.warning(f"Cannot plot centroids: Features '{features[0]}' or '{features[1]}' not found in scaled data.")
         except Exception as e: st.warning(f"Could not plot centroids: {e}")
@@ -583,15 +457,15 @@ def plot_clusters(df, features, cluster_labels, kmeans_model):
         legend_title_text='House (Cluster)',
         plot_bgcolor='rgba(0,0,0,0)', # Transparent plot background
         paper_bgcolor='rgba(0,0,0,0)', # Transparent paper background
-        font_color=LANNISTER_TEXT,
-        title_font_color=LANNISTER_GOLD,
-        xaxis_tickfont_color=LANNISTER_TEXT,
-        yaxis_tickfont_color=LANNISTER_TEXT,
-        xaxis_title_font_color=LANNISTER_TEXT,
-        yaxis_title_font_color=LANNISTER_TEXT,
-        legend_font_color=LANNISTER_TEXT,
-        xaxis_gridcolor=LANNISTER_BORDER,
-        yaxis_gridcolor=LANNISTER_BORDER
+        font_color=theme["colors"]["text"],
+        title_font_color=theme["colors"]["accent"],
+        xaxis_tickfont_color=theme["colors"]["text"],
+        yaxis_tickfont_color=theme["colors"]["text"],
+        xaxis_title_font_color=theme["colors"]["text"],
+        yaxis_title_font_color=theme["colors"]["text"],
+        legend_font_color=theme["colors"]["text"],
+        xaxis_gridcolor=theme["colors"]["border"],
+        yaxis_gridcolor=theme["colors"]["border"]
         )
     return fig
 
@@ -650,11 +524,11 @@ if not st.session_state.app_started:
         # Apply the welcome-container class for centering
         st.markdown("<div class='welcome-container'>", unsafe_allow_html=True)
         # --- Removed Roaring Lion GIF ---
-        st.markdown(f"<h1 style='color:{LANNISTER_GOLD}; font-size: 3rem; text-shadow: 2px 2px 4px #000;'>Hear Me Roar!</h1>", unsafe_allow_html=True)
-        st.markdown(f"<h2 style='color:{LANNISTER_TEXT};'>Welcome to the Lannister Financial Console</h2>", unsafe_allow_html=True)
-        st.image("https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDN1eXlqZzRzN3c1b2w2aXl1MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L1JjHInX78b5e/giphy.gif", caption="A Lannister always pays his debts... and analyzes returns.") # Tyrion GIF
+        st.markdown(f"<h1 style='color:{theme["colors"]["accent"]}; font-size: 3rem; text-shadow: 2px 2px 4px #000;'>theme["quotes"]["welcome_title"]</h1>", unsafe_allow_html=True)
+        st.markdown(f"<h2 style='color:{theme["colors"]["text"]};'>theme["quotes"]["welcome_sub"]</h2>", unsafe_allow_html=True)
+        st.image(theme["gifs"]["welcome"], caption="theme["quotes"]["quote"]") # Tyrion GIF
         st.markdown("---")
-        st.markdown(f"<p style='color:{LANNISTER_TEXT}; font-size: 1.1rem;'>Manage your assets with the precision of Casterly Rock's vaults. Analyze market trends, predict outcomes, and ensure your coffers remain full.</p>", unsafe_allow_html=True)
+        st.markdown(f"<p style='color:{theme["colors"]["text"]}; font-size: 1.1rem;'>Manage your assets with the precision of Casterly Rock's vaults. Analyze market trends, predict outcomes, and ensure your coffers remain full.</p>", unsafe_allow_html=True)
         if st.button("Enter the Console", key="enter_app"):
             st.session_state.app_started = True
             st.rerun()
@@ -668,7 +542,7 @@ elif st.session_state.app_started:
         # Lannister Lion Sigil
         # --- Replaced use_column_width with use_container_width ---
         st.image("https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDN1eXlqZzRzN3c1b2w2aXl1MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEjI1erPMTMBFmNHi/giphy.gif", use_container_width=True)
-        st.markdown(f"<h2 style='color:{LANNISTER_GOLD}; text-align: center;'>Lannister Console</h2>", unsafe_allow_html=True)
+        st.markdown(f"<h2 style='color:{theme["colors"]["accent"]}; text-align: center;'>Lannister Console</h2>", unsafe_allow_html=True)
         st.divider()
 
         # --- 1. Load Data ---
@@ -908,8 +782,8 @@ elif st.session_state.app_started:
                                 st.success("Forces divided and standardized.")
                                 st.write(f"Training Forces: X {X_train.shape}, y {y_train.shape}"); st.write(f"Testing Forces: X {X_test.shape}, y {y_test.shape}")
                                 labels = ['Training Forces', 'Testing Forces']; sizes = [len(X_train), len(X_test)]
-                                fig = px.pie(values=sizes, names=labels, title='Division of Forces', color_discrete_sequence=[LANNISTER_CRIMSON, LANNISTER_GOLD])
-                                fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', font_color=LANNISTER_TEXT, legend_font_color=LANNISTER_TEXT)
+                                fig = px.pie(values=sizes, names=labels, title='Division of Forces', color_discrete_sequence=[theme["colors"]["primary"], theme["colors"]["accent"]])
+                                fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', font_color=theme["colors"]["text"], legend_font_color=theme["colors"]["text"])
                                 st.plotly_chart(fig, use_container_width=True); reset_downstream_state('split_scale'); st.rerun()
                         except Exception as e: st.error(f"Error dividing forces: {e}"); st.exception(e)
                 else: # K-Means Scaling
@@ -1017,8 +891,8 @@ elif st.session_state.app_started:
                                 except AttributeError: pred_proba = None
                                 metrics['Accuracy'] = accuracy_score(st.session_state.y_test, predictions); cm = confusion_matrix(st.session_state.y_test, predictions); metrics['Confusion Matrix'] = cm.tolist()
                                 st.metric("Accuracy", f"{metrics['Accuracy']:.4f}", help="Prediction Accuracy")
-                                fig_cm = px.imshow(cm, text_auto=True, aspect="auto", labels=dict(x="Predicted", y="True", color="Count"), x=[str(c) for c in st.session_state.model.classes_], y=[str(c) for c in st.session_state.model.classes_], title="Confusion Matrix", color_continuous_scale=[[0, LANNISTER_DARK], [1, LANNISTER_CRIMSON]]) # Themed colorscale
-                                fig_cm.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', font_color=LANNISTER_TEXT, title_font_color=LANNISTER_GOLD, xaxis_tickfont_color=LANNISTER_TEXT, yaxis_tickfont_color=LANNISTER_TEXT)
+                                fig_cm = px.imshow(cm, text_auto=True, aspect="auto", labels=dict(x="Predicted", y="True", color="Count"), x=[str(c) for c in st.session_state.model.classes_], y=[str(c) for c in st.session_state.model.classes_], title="Confusion Matrix", color_continuous_scale=[[0, theme["colors"]["bg"]], [1, theme["colors"]["primary"]]]) # Themed colorscale
+                                fig_cm.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', font_color=theme["colors"]["text"], title_font_color=theme["colors"]["accent"], xaxis_tickfont_color=theme["colors"]["text"], yaxis_tickfont_color=theme["colors"]["text"])
                                 st.plotly_chart(fig_cm, use_container_width=True)
                             elif st.session_state.selected_model_type == "K-Means Clustering":
                                 labels = st.session_state.model.labels_; st.session_state.cluster_labels = labels; n_labels = len(np.unique(labels)); n_samples = st.session_state.X_scaled_kmeans.shape[0]
@@ -1038,8 +912,8 @@ elif st.session_state.app_started:
                           st.metric("Accuracy", f"{metrics.get('Accuracy', 'N/A'):.4f}")
                           cm_list = metrics.get('Confusion Matrix')
                           if cm_list and hasattr(st.session_state.model, 'classes_'):
-                               cm = np.array(cm_list); fig_cm = px.imshow(cm, text_auto=True, aspect="auto", labels=dict(x="Predicted", y="True", color="Count"), x=[str(c) for c in st.session_state.model.classes_], y=[str(c) for c in st.session_state.model.classes_], title="Confusion Matrix", color_continuous_scale=[[0, LANNISTER_DARK], [1, LANNISTER_CRIMSON]])
-                               fig_cm.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', font_color=LANNISTER_TEXT, title_font_color=LANNISTER_GOLD, xaxis_tickfont_color=LANNISTER_TEXT, yaxis_tickfont_color=LANNISTER_TEXT); st.plotly_chart(fig_cm, use_container_width=True)
+                               cm = np.array(cm_list); fig_cm = px.imshow(cm, text_auto=True, aspect="auto", labels=dict(x="Predicted", y="True", color="Count"), x=[str(c) for c in st.session_state.model.classes_], y=[str(c) for c in st.session_state.model.classes_], title="Confusion Matrix", color_continuous_scale=[[0, theme["colors"]["bg"]], [1, theme["colors"]["primary"]]])
+                               fig_cm.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', font_color=theme["colors"]["text"], title_font_color=theme["colors"]["accent"], xaxis_tickfont_color=theme["colors"]["text"], yaxis_tickfont_color=theme["colors"]["text"]); st.plotly_chart(fig_cm, use_container_width=True)
                      elif st.session_state.selected_model_type == "K-Means Clustering":
                           col1, col2 = st.columns(2); ss = metrics.get('Silhouette Score'); col1.metric("Silhouette Score", f"{ss:.4f}" if ss is not None else "N/A"); col2.metric("Inertia (WCSS)", f"{metrics.get('Inertia (WCSS)', 'N/A'):.2f}")
         else: st.info("Execute a strategy (Step 5) first.")
@@ -1060,9 +934,9 @@ elif st.session_state.app_started:
                          else: st.info("Feature importance cannot be plotted.")
                          # Specific plots
                          if st.session_state.selected_model_type == "Linear Regression":
-                             results_df = pd.DataFrame({'Actual': st.session_state.y_test, 'Predicted': st.session_state.predictions}); fig_pred = px.scatter(results_df, x='Actual', y='Predicted', title='Actual vs. Predicted Wealth', labels={'Actual': 'Actual Value', 'Predicted': 'Predicted Value'}, trendline='ols', trendline_color_override=LANNISTER_GOLD, hover_data=results_df.columns)
+                             results_df = pd.DataFrame({'Actual': st.session_state.y_test, 'Predicted': st.session_state.predictions}); fig_pred = px.scatter(results_df, x='Actual', y='Predicted', title='Actual vs. Predicted Wealth', labels={'Actual': 'Actual Value', 'Predicted': 'Predicted Value'}, trendline='ols', trendline_color_override=theme["colors"]["accent"], hover_data=results_df.columns)
                              min_val = min(results_df['Actual'].min(), results_df['Predicted'].min()); max_val = max(results_df['Actual'].max(), results_df['Predicted'].max()); fig_pred.add_shape(type='line', x0=min_val, y0=min_val, x1=max_val, y1=max_val, line=dict(color='#AAAAAA', dash='dash'))
-                             fig_pred.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', font_color=LANNISTER_TEXT, title_font_color=LANNISTER_GOLD, xaxis_tickfont_color=LANNISTER_TEXT, yaxis_tickfont_color=LANNISTER_TEXT, xaxis_gridcolor=LANNISTER_BORDER, yaxis_gridcolor=LANNISTER_BORDER); st.plotly_chart(fig_pred, use_container_width=True)
+                             fig_pred.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', font_color=theme["colors"]["text"], title_font_color=theme["colors"]["accent"], xaxis_tickfont_color=theme["colors"]["text"], yaxis_tickfont_color=theme["colors"]["text"], xaxis_gridcolor=theme["colors"]["border"], yaxis_gridcolor=theme["colors"]["border"]); st.plotly_chart(fig_pred, use_container_width=True)
                          elif st.session_state.selected_model_type == "Logistic Regression": st.info("Confusion Matrix shown during assessment (Step 6).")
                      else: st.warning("Predictions/test data unavailable for visualization.")
                 # K-Means Visualization
@@ -1127,4 +1001,4 @@ elif st.session_state.app_started:
 
     # --- Footer ---
     st.markdown("---")
-    st.markdown(f"<p style='text-align: center; color: {LANNISTER_GOLD};'>*A Lannister Always Pays His Debts*</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='text-align: center; color: {theme["colors"]["accent"]};'>*A Lannister Always Pays His Debts*</p>", unsafe_allow_html=True)
