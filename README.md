@@ -22,6 +22,16 @@ Each theme adapts the visuals, quotes, GIFs, and interface styling to deliver an
 - 🎭 Switch themes dynamically from the sidebar
 - 💾 Download trained models or prediction results
 
+👨‍💻 Contributors
+Name	Roll Number
+Sharim	22i-2259
+Mustafa Adnan	22i-2275
+Abdullah Pervez	22i-2252
+Mashal Zehra	22i-7458
+
+Instructor: Dr. Usama Arshad
+Assistant Professor, FSM
+
 ---
 
 ## 🚀 Getting Started
@@ -35,13 +45,3 @@ pip install -r requirements.txt
 pip install streamlit pandas numpy yfinance scikit-learn plotly joblib
 streamlit run complete_dynamic_theme_app.py
 
-
-👨‍💻 Contributors
-Name	Roll Number
-Sharim	22i-2259
-Mustafa Adnan	22i-2275
-Abdullah Pervez	22i-2252
-Mashal Zehra	22i-7458
-
-Instructor: Dr. Usama Arshad
-Assistant Professor, FSM
